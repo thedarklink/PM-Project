@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails scrum-pm: production" uuid="695950f5-06a2-40e9-9f95-b6489fa733cb">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <user-name>scrum-pm</user-name>
+    </data-source>
+    <data-source name="Rails scrum-pm: development" uuid="a7c1e5a9-8ccd-4613-bdba-0c4c884be71f">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <first-sync>true</first-sync>
+    </data-source>
+    <data-source name="Rails scrum-pm: test" uuid="3514f74a-f12a-4288-ac5e-15645850b1f1">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+    </data-source>
+  </component>
+</project>

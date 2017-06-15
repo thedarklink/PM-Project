@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="Rails scrum-pm: production" uuid="695950f5-06a2-40e9-9f95-b6489fa733cb">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:scrum-pm_production</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails scrum-pm: development" uuid="a7c1e5a9-8ccd-4613-bdba-0c4c884be71f">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:scrum-pm_development</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails scrum-pm: test" uuid="3514f74a-f12a-4288-ac5e-15645850b1f1">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:scrum-pm_test</jdbc-url>
+    </data-source>
+  </component>
+</project>
