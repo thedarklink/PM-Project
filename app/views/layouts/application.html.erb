@@ -35,7 +35,7 @@
             <% Project.all.each do |project| %>
                 <li>
                   <a>
-                    <%= project.name %>
+                    <%= link_to project.name, controller: "projects", action: "show", id: project.id %>
                   </a>
                 </li>
             <% end %>
