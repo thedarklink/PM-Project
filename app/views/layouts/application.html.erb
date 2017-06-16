@@ -32,9 +32,13 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Projekte
             <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Projekt 1</a></li>
-            <li><a href="#">Projekt 2</a></li>
-            <li><a href="#">Projekt 3</a></li>
+            <% Project.all.each do |project| %>
+                <li>
+                  <a>
+                    <%= project.name %>
+                  </a>
+                </li>
+            <% end %>
             <li role="separator" class="divider"></li>
             <li>
               <%= link_to "Neues Projekt", new_project_path %>
