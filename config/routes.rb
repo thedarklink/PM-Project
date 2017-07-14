@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'board/index'
+
+  resources :backlogitems
   resources :sprints
   resources :projects
   devise_for :users

@@ -1,0 +1,39 @@
+<h3>
+  <small>
+    <%= @project.name %>
+  </small>
+  <br/> Backlog
+</h3>
+<hr/>
+
+<%= link_to '+ Neues Item', new_backlogitem_path(:project => @project.id ) %>
+<hr/>
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= sort_link "title" %></th>
+      <th>Creationdate</th>
+      <th>Assignedto</th>
+      <th>State</th>
+      <th>Priorty</th>
+      <th>Effort</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @backlogitems.each do |backlogitem| %>
+      <tr>
+        <td><%= backlogitem.title %></td>
+        <td><%= backlogitem.creationdate %></td>
+        <td><%= backlogitem.assignedto %></td>
+        <td><%= backlogitem.state %></td>
+        <td><%= backlogitem.priorty %></td>
+        <td><%= backlogitem.effort %></td>
+        <td><%= link_to 'Anzeigen', backlogitem %></td>
+        <td><%= link_to 'Bearbeiten', edit_backlogitem_path(backlogitem) %></td>
+        <td><%= link_to 'Löschen', backlogitem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
