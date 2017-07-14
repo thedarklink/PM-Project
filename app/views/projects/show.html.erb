@@ -1,24 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
 
-<p>
-  <strong>Duedate:</strong>
-  <%= @project.dueDate %>
-</p>
+<div class="row">
+  <div class="col-md-8">
+    <h3>
+      <%= @project.name %> <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe , edit_project_path(@project) %>
+      <br/>
+      <small>  <%= @project.startDate %> - <%= @project.dueDate %></small>
+    </h3>
+    <hr/>
 
-<p>
-  <strong>Startdate:</strong>
-  <%= @project.startDate %>
-</p>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+        60%
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <h3><small>Beschreibung</small></h3> <br/>
+    <%= @project.description %>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+
+<%= link_to 'Backlog', backlogitems_path(:project => @project.id) %> |
+<%= link_to 'Scrum Board', board_index_path(:project => @project.id) %>
+
+
+<hr/>
+

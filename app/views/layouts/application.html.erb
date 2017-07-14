@@ -27,7 +27,7 @@
     <a class="navbar-brand" href="#">SCRUM-TOOL</a>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav">
-        <li><%= link_to "Dashboard", "/path1" %></li>
+        <li><%= link_to "Dashboard", "/" %></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Projekte
             <span class="caret"></span></a>
@@ -49,18 +49,9 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-            <% if current_user.has_role? :productowner %>
-                <li>Product Owner</li>
-            <% end %>
-            <% if current_user.has_role? :team %>
-                <li>Scrum Team</li>
-            <% end %>
-            <% if current_user.has_role? :master %>
-                <li>Scrum Master</li>
-            <% end %>
-            <li><%= link_to_unless_current("Abmelden", destroy_user_session_path, method: :delete) %></li>
+            <li><%= link_to("Abmelden", destroy_user_session_path, method: :delete) %></li>
         <% else %>
-            <li><%= link_to_unless_current("Anmelden", new_user_session_path) %></li>
+            <li><%= link_to("Anmelden", new_user_session_path) %></li>
         <% end %>
       </ul>
     </div>
@@ -72,8 +63,47 @@
   <footer>
     <p>&copy; TheRankZz 2017</p>
   </footer>
-  <p class="text-success"><%= notice %></p>
-  <div class="text-danger"><%= alert %></div>
+
+  <div class="alerts">
+
+    <% if !notice.nil? %>
+        <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <%= notice %>
+        </div>
+    <% end %>
+
+    <% if !alert.nil? %>
+        <div class="alert alert-danger">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <%= alert %>
+        </div>
+    <% end %>
+
+    <% if user_signed_in? %>
+        <div class="alert alert-info" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          Angemeldet als
+          <% if current_user.has_role? :productowner %>
+              <b>Product Owner</b>
+          <% end %>
+          <% if current_user.has_role? :team %>
+              <b>Scrum Team</b>
+          <% end %>
+          <% if current_user.has_role? :master %>
+              <b>Scrum Master</b>
+          <% end %>
+          !
+        </div>
+    <% end %>
+  </div>
+
 </div> <!-- /container -->
 
 </body>

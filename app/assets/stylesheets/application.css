@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+footer {
+    position: fixed;
+    height: 100px;
+    bottom: 0;
+    width: 100%;
+}
+
+.alerts {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    width: 350px;
+    z-index: 1000;
+}
