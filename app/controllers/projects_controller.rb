@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
-
+    @line_chart = Gchart.line(:data => [0, 40, 10, 70, 20])
   end
 
   # GET /projects/new
