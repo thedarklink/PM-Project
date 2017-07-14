@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  startDate: 2017-07-13
+  endDate: 2017-07-13
+  effort: 1
+  remainingWork: 1
+
+two:
+  name: MyString
+  startDate: 2017-07-13
+  endDate: 2017-07-13
+  effort: 1
+  remainingWork: 1
