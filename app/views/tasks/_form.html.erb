@@ -1,0 +1,65 @@
+<%= form_with(model: task, local: true) do |form| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= form.text_field :backlogitem_id, id: :backlogitem_id %>
+
+
+    <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :task_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description, id: :task_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :author %>
+    <%= form.text_field :author, id: :task_author %>
+  </div>
+
+  <div class="field">
+    <%= form.label :creationdate %>
+    <%= form.date_select :creationdate, id: :task_creationdate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :assignedto %>
+    <%= form.text_field :assignedto, id: :task_assignedto %>
+  </div>
+
+  <div class="field">
+    <%= form.label :state %>
+    <%= form.select(:state, Task.states.keys) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :priority %>
+    <%= form.select(:priorty, Task.priorties.keys) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :remainingwork %>
+    <%= form.number_field :remainingwork, id: :task_remainingwork %>
+  </div>
+
+  <div class="field">
+    <%= form.label :effort %>
+    <%= form.number_field :effort, id: :task_effort %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
