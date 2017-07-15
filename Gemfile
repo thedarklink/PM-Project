@@ -35,11 +35,13 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'jquery-rails'
 gem "twitter-bootstrap-rails"
-gem 'devise'
+gem "devise", git: 'https://github.com/plataformatec/devise.git'
 gem 'cancancan'
 gem 'rolify'
 
-gem 'googlecharts', '~> 1.6', '>= 1.6.12'
+gem 'chartkick'
+gem 'groupdate', '~> 2.5', '>= 2.5.2'
+gem 'active_median', '~> 0.1.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -12,6 +12,24 @@ class BacklogitemsController < ApplicationController
                           .order("#{sort_column} #{sort_direction}")
       @project = Project.find(params[:project])
     end
+
+
+    @tageImSprint = ((Project.first.dueDate) - (Project.first.startDate)).to_i
+
+    @back = Backlogitem.all.sum(:effort)
+
+    @perDay = @back / @tageImSprint
+
+
+    @serieLinea = Array.new(@tageImSprint)
+
+
+    @noises = {}
+    @tageImSprint.times do |i|
+      @noises[i] = @back-i*@perDay
+    end
+
+    @series_a = {"1 Tag" => @back, "2 Tag" => @back-@perDay,"3 Tag" => @back-2*@perDay, "4 Tag" => 0}
   end
 
   # GET /backlogitems/1
@@ -75,6 +93,7 @@ class BacklogitemsController < ApplicationController
       format.json {head :no_content}
     end
   end
+
 
   private
   # Use callbacks to share common setup or constraints between actions.

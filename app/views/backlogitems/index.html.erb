@@ -1,6 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ChartKickExample</title>
+
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag "http://www.google.com/jsapi", "chartkick" %>
+  <%= stylesheet_link_tag 'http://yandex.st/bootstrap/3.1.1/css/bootstrap.min.css' %>
+  <%= javascript_include_tag 'http://yandex.st/bootstrap/3.1.1/js/bootstrap.min.js' %>
+
+  <%= csrf_meta_tags %>
+</head>
+
+
 <h3>
   <small>
     <%= @project.name %>
+    <%= @tageImSprint.to_i%>
   </small>
   <br/> Backlog
 </h3>
@@ -37,3 +53,25 @@
     <% end %>
   </tbody>
 </table>
+
+
+
+<div class="row">
+
+  <!-- Line Chart - Single Series -->
+  <div class="col-xs-6">
+    <h3>Visits By Day</h3>
+
+
+    <% series_b = {"1 Tag" => 30, "2 Tag" => 29,"3 Tag" => 26} %>
+
+    <h1><%= @tageImSprint%></h1>
+    <h1><%= @back%></h1>
+    <h1><%= @perDay%></h1>
+
+    <%= line_chart [{'data': @noises, 'name': 'Estimate'},
+                    {'data': @noises, 'name': 'Afford'}] %>
+
+
+  </div>
+  </div>
