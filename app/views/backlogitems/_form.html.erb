@@ -1,62 +1,62 @@
 <%= form_with(model: backlogitem, local: true) do |form| %>
-  <% if backlogitem.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(backlogitem.errors.count, "error") %> prohibited this backlogitem from being saved:</h2>
 
-      <ul>
-      <% backlogitem.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+    <div class="modal-body">
+
+      <% if backlogitem.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(backlogitem.errors.count, "error") %> prohibited this backlogitem from being saved:</h2>
+
+            <ul>
+              <% backlogitem.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
       <% end %>
-      </ul>
+
+
+      <%= form.hidden_field :project_id, id: :backlogitem_project_id %>
+      <%= form.hidden_field :author, id: :backlogitem_author %>
+
+
+      <div class="form-group">
+        <%= form.label :title %>
+        <%= form.text_field :title, id: :backlogitem_title, :class => 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :description %>
+        <%= form.text_area :description, id: :backlogitem_description, :class => 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :creationdate %>
+        <%= form.date_select :creationdate, id: :backlogitem_creationdate, :class => 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :assignedto %>
+        <%= form.text_field :assignedto, id: :backlogitem_assignedto, :class => 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :state %>
+        <%= form.select(:state, Backlogitem.states.keys) %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :priorty %>
+        <%= form.select(:priorty, Backlogitem.priorties.keys) %>
+
+      </div>
+
+      <div class="form-group">
+        <%= form.label :effort %>
+        <%= form.number_field :effort, id: :backlogitem_effort, :class => 'form-control' %>
+      </div>
     </div>
-  <% end %>
-
-
-    <%= form.text_field :project_id, id: :backlogitem_project_id %>
-
-
-    <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :backlogitem_title %>
-  </div>
-
-    <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :backlogitem_description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :author %>
-    <%= form.text_field :author, id: :backlogitem_author %>
-  </div>
-
-  <div class="field">
-    <%= form.label :creationdate %>
-    <%= form.date_select :creationdate, id: :backlogitem_creationdate %>
-  </div>
-
-  <div class="field">
-    <%= form.label :assignedto %>
-    <%= form.text_field :assignedto, id: :backlogitem_assignedto %>
-  </div>
-
-  <div class="field">
-    <%= form.label :state %>
-    <%= form.select(:state, Backlogitem.states.keys) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :priorty %>
-    <%= form.select(:priorty, Backlogitem.priorties.keys) %>
-
-  </div>
-
-  <div class="field">
-    <%= form.label :effort %>
-    <%= form.number_field :effort, id: :backlogitem_effort %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="modal-footer">
+      <%= link_to 'Close', backlogitems_path(:project => @project_id), :class => 'btn btn-default' %>
+      <%= form.submit :class => 'btn btn-primary' %>
+    </div>
 <% end %>

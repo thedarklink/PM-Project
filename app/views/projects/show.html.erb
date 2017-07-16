@@ -1,8 +1,11 @@
+<div class="container">
+
 <h3>
   <small>  <%= @project.startDate %> - <%= @project.dueDate %></small>
   <br/>
   <%= @project.name %> <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_project_path(@project) %>
 </h3>
+</div>
 <hr/>
 
 <div class="container">

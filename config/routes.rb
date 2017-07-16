@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'protected/index'
+
   resources :tasks
   get 'board/index'
 
