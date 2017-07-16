@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  layout '_modal', only: [:new, :edit]
 
   # GET /tasks
   # GET /tasks.json
@@ -17,11 +18,13 @@ class TasksController < ApplicationController
     @task = Task.new
     if params[:backlog]
       @task.backlogitem = Backlogitem.find(params[:backlog])
+      @project_id = @task.backlogitem.project_id
     end
   end
 
   # GET /tasks/1/edit
   def edit
+    @project_id = @task.backlogitem.project_id
   end
 
   # POST /tasks
@@ -35,7 +38,7 @@ class TasksController < ApplicationController
         format.html { redirect_to board_index_path(project: @task.backlogitem.project_id), notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: @task }
         else
-        format.html { render :new }
+        format.html { redirect_to board_index_path(project: @task.backlogitem.project_id), alert: @task.errors  }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
@@ -49,7 +52,7 @@ class TasksController < ApplicationController
         format.html { redirect_to board_index_path(project: @task.backlogitem.project_id), notice: 'Task was successfully updated.' }
         format.json { render :show, status: :ok, location: @task }
       else
-        format.html { render :edit }
+        format.html { redirect_to board_index_path(project: @task.backlogitem.project_id), alert: @task.errors  }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end

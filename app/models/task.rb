@@ -3,4 +3,7 @@ class Task < ApplicationRecord
 
   enum state: [ :New, :Done, :InProgress]
   enum priorty: [:Low, :Normal, :High ]
+
+  validates :title, :presence => true
+
 end

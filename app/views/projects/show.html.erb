@@ -1,36 +1,40 @@
-<p id="notice"><%= notice %></p>
+<h3>
+  <small>  <%= @project.startDate %> - <%= @project.dueDate %></small>
+  <br/>
+  <%= @project.name %> <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_project_path(@project) %>
+</h3>
+<hr/>
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
 
-
-<div class="row">
-  <div class="col-md-8">
-    <h3>
-      <%= @project.name %> <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe , edit_project_path(@project) %>
-      <br/>
-      <small>  <%= @project.startDate %> - <%= @project.dueDate %></small>
-    </h3>
-    <hr/>
-
-    <div class="progress">
-      <div class="progress-bar progress-bar-success" style="width: <%= @donePercantage %>%">
-        <%= @donePercantage.to_i %>% Done
-      </div>
-      <div class="progress-bar progress-bar-warning" style="width: <%= @inprogressPercantage %>%">
-        <%= @inprogressPercantage.to_i %>% In Progress
+      <h3>
+        <small>Fortschritt</small>
+      </h3>
+      <div class="progress">
+        <div class="progress-bar progress-bar-success" style="width: <%= @donePercantage %>%">
+          <%= @donePercantage %>% Done
+        </div>
+        <div class="progress-bar progress-bar-warning" style="width: <%= @inprogressPercantage %>%">
+          <%= @inprogressPercantage %>% In Progress
+        </div>
       </div>
     </div>
+    <div class="col-md-4">
+      <h3>
+        <small>Beschreibung</small>
+      </h3>
+      <br/>
+      <%= @project.description %>
+    </div>
   </div>
-  <div class="col-md-4">
-    <h3><small>Beschreibung</small></h3> <br/>
-    <%= @project.description %>
-  </div>
+
+  <%= link_to 'Backlog', backlogitems_path(:project => @project.id) %> |
+  <%= link_to 'Scrum Board', board_index_path(:project => @project.id) %> |
+  <%= link_to 'Sprints', sprints_path(:project => @project.id) %>
+
 </div>
-
-
-<%= link_to 'Backlog', backlogitems_path(:project => @project.id) %> |
-<%= link_to 'Scrum Board', board_index_path(:project => @project.id) %> |
-<%= link_to 'Sprints', sprints_path(:project => @project.id) %>
-
 
 
 <hr/>

@@ -12,10 +12,18 @@
   float: left;
   display: inline-block;
   max-width: 150px;
+
+  .glyphicon {
+    float: right;
+  }
 }
 
 .userstory {
   border: 1px solid #CCCCCC;
   padding: 5px;
   border-left: 5px solid sandybrown;
+
+  .glyphicon {
+    float: right;
+  }
 }

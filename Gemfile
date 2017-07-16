@@ -38,6 +38,10 @@ gem "twitter-bootstrap-rails"
 gem 'devise'
 gem 'cancancan'
 gem 'rolify'
+gem 'client_side_validations'
+
+
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

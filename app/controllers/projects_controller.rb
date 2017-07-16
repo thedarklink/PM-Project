@@ -10,8 +10,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
-    @tasks = @project.backlogitems.left_joins(:tasks).select(:tasks)
-    @tasksAllCount = @tasks.count
+    @tasksAllCount = @project.backlogitems.left_joins(:tasks).select(:tasks).count
     @tasksDoneCount = @project.backlogitems.left_joins(:tasks)
                           .where(tasks: {state: Task.states[:Done]})
                           .select(:tasks)
@@ -20,8 +19,9 @@ class ProjectsController < ApplicationController
                           .where(tasks: {state: Task.states[:InProgress]})
                           .select(:tasks)
                           .count
-    @donePercantage = (@tasksDoneCount.to_f / @tasksAllCount) * 100
-    @inprogressPercantage = (@tasksInProgressCount.to_f / @tasksAllCount) * 100
+
+    @donePercantage = ((@tasksDoneCount.to_f / @tasksAllCount) * 100)
+    @inprogressPercantage = ((@tasksInProgressCount.to_f / @tasksAllCount) * 100)
   end
 
   # GET /projects/new
