@@ -17,7 +17,8 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require rails.validations
-
+//= require Chart.bundle
+//= require chartkick
 
 $(function(){
     /* Your JavaScript goes here... */

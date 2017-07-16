@@ -39,6 +39,7 @@ gem 'devise'
 gem 'cancancan'
 gem 'rolify'
 gem 'client_side_validations'
+gem "chartkick"
 
 
 
