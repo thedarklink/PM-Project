@@ -1,35 +1,35 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <h3>Sprints <td><%= link_to '<span class="glyphicon glyphicon-plus"></span>'.html_safe, new_sprint_path(:project => @project.id ) %></td></h3>
 
-<h1>Sprints</h1>
+</div>
+<hr/>
 
-<table>
+
+<table class="table">
   <thead>
-    <tr>
-      <th>Name</th>
-      <th>Startdate</th>
-      <th>Enddate</th>
-      <th>Effort</th>
-      <th>Remainingwork</th>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th>Titel</th>
+    <th>Beschreibung</th>
+    <th>Status</th>
+    <th>Aufwand</th>
+    <th colspan="3"></th>
+  </tr>
   </thead>
-
   <tbody>
-    <% @sprints.each do |sprint| %>
+  <% Sprint.all.each do |sprint| %>
       <tr>
-        <td><%= sprint.name %></td>
+
+        <td><%= link_to sprint.name,  sprint %></td>
         <td><%= sprint.startDate %></td>
-        <td><%= sprint.endDate %></td>
         <td><%= sprint.effort %></td>
         <td><%= sprint.remainingWork %></td>
-        <td><%= link_to 'Show', sprint %></td>
-        <td><%= link_to 'Edit', edit_sprint_path(sprint) %></td>
-        <td><%= link_to 'Destroy', sprint, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_sprint_path(sprint) %></td>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 
-<br>
+</div>
+<hr/>
 
-<%= link_to 'New Sprint', new_sprint_path %>
+

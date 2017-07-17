@@ -4,12 +4,17 @@ class SprintsController < ApplicationController
   # GET /sprints
   # GET /sprints.json
   def index
-    @sprints = Sprint.all
+    if params[:project]
+      @sprints = Sprint
+                          .where(project_id: params[:project])
+      @project = Project.find(params[:project])
+    end
   end
 
   # GET /sprints/1
   # GET /sprints/1.json
   def show
+    @tasks = Task.all
   end
 
   # GET /sprints/new

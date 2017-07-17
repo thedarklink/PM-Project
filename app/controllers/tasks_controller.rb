@@ -14,6 +14,8 @@ class TasksController < ApplicationController
   def show
   end
 
+
+
   # GET /tasks/new
   def new
     @task = Task.new
@@ -78,7 +80,7 @@ class TasksController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def task_params
-    params.require(:task).permit(:title, :description, :author, :creationdate, :assignedto, :state, :priority, :remainingwork, :effort, :backlogitem_id)
+    params.require(:task).permit(:title, :description, :author, :creationdate, :assignedto, :state, :priority, :remainingwork, :effort, :backlogitem_id, :sprint_id)
   end
 
   def user_signed_in

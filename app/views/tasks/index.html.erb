@@ -30,6 +30,7 @@
         <td><%= task.priority %></td>
         <td><%= task.remainingwork %></td>
         <td><%= task.effort %></td>
+        <td><%= task.sprint_id %></td>
         <td><%= link_to 'Show', task %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -18,7 +18,7 @@
               </div>
           <% end %>
 
-          <%= form.hidden_field :backlogitem_id, id: :backlogitem_id %>
+          <%= form.text_field :backlogitem_id, id: :backlogitem_id %>
 
 
           <div class="form-group">
@@ -67,6 +67,11 @@
           <div class="form-group">
             <%= form.label :effort%>
             <%= form.number_field :effort, id: :task_effort, :class => 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :sprint_id%>
+            <%= form.number_field :sprint_id, id: :sprint_id, :class => 'form-control' %>
           </div>
 
 </div>

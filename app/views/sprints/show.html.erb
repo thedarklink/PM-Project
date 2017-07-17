@@ -1,29 +1,38 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<p>
-  <strong>Name:</strong>
-  <%= @sprint.name %>
-</p>
+  <h3>
+    <small>  <%= @sprint.startDate %> - <%= @sprint.endDate %></small>
+    <br/>
+    <%= @sprint.name %> <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_sprint_path(@sprint) %>
+  </h3>
+</div>
+<hr/>
 
-<p>
-  <strong>Startdate:</strong>
-  <%= @sprint.startDate %>
-</p>
 
-<p>
-  <strong>Enddate:</strong>
-  <%= @sprint.endDate %>
-</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Titel</th>
+      <th>Beschreibung</th>
+      <th>Status</th>
+      <th>Aufwand</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+        <tr>
 
-<p>
-  <strong>Effort:</strong>
-  <%= @sprint.effort %>
-</p>
+          <td><%= task.title %></td>
+          <td><%= task.description %></td>
+          <td><%= task.state %></td>
+          <td><%= task.effort %></td>
 
-<p>
-  <strong>Remainingwork:</strong>
-  <%= @sprint.remainingWork %>
-</p>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'Edit', edit_sprint_path(@sprint) %> |
-<%= link_to 'Back', sprints_path %>
+</div>
+<hr/>
+
