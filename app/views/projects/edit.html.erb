@@ -1,6 +1,9 @@
-<h1>Editing Project</h1>
-
+<div class="container">
+  <h3>
+    <small>Editing</small>
+    <br/>
+    <%= @project.name %>
+  </h3>
+  <hr/>
 <%= render 'form', project: @project %>
-
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>
+</div>

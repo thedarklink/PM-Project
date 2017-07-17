@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'roadmap/index'
+
+  get 'protected/index'
+
   resources :tasks
   get 'board/index'
 

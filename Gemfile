@@ -38,6 +38,11 @@ gem "twitter-bootstrap-rails"
 gem "devise", git: 'https://github.com/plataformatec/devise.git'
 gem 'cancancan'
 gem 'rolify'
+gem 'client_side_validations'
+gem "chartkick"
+
+
+
 
 gem 'chartkick'
 gem 'groupdate', '~> 2.5', '>= 2.5.2'

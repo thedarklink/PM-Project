@@ -25,5 +25,29 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql:scrum-pm_test</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="Rails PM: development" uuid="c459c6ae-8c93-41a3-8a2a-af9945489fa0">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:scrum-pm_development</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails PM: test" uuid="3e7818de-b680-4bbb-bfad-0992caa7c305">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:scrum-pm_test</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails PM: production" uuid="8e6967fd-0578-43e6-a4ef-993b346d1892">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:scrum-pm_production</jdbc-url>
+    </data-source>
   </component>
 </project>

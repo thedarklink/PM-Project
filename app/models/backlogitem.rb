@@ -4,4 +4,7 @@ class Backlogitem < ApplicationRecord
 
   enum state: [ :New, :Approved, :Committed, :Done, :Removed ]
   enum priorty: [:Low, :Normal, :High ]
+
+  validates :title, :presence => true
+
 end

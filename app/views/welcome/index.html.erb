@@ -1,1 +1,23 @@
-<h3>Startseite</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <h4>Meine Projekte</h4>
+      <% @myprojects.each do |p| %>
+      <a class="tile">
+        <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+        <div class="name"><%= p.name %></div>
+      </a>
+      <% end %>
+    </div>
+    <div class="col-md-8">
+      <h4>Roadmap</h4>
+      <% data = @projects.pluck(:name, :startDate, :dueDate) %>
+      <%= timeline data %>
+    </div>
+  </div>
+  <div class="row">
+    <h4>Meine Aufgaben</h4>
+
+  </div>
+
+</div>

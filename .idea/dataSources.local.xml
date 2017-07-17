@@ -12,5 +12,14 @@
     <data-source name="Rails scrum-pm: test" uuid="3514f74a-f12a-4288-ac5e-15645850b1f1">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
     </data-source>
+    <data-source name="Rails PM: development" uuid="c459c6ae-8c93-41a3-8a2a-af9945489fa0">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+    </data-source>
+    <data-source name="Rails PM: test" uuid="3e7818de-b680-4bbb-bfad-0992caa7c305">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+    </data-source>
+    <data-source name="Rails PM: production" uuid="8e6967fd-0578-43e6-a4ef-993b346d1892">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+    </data-source>
   </component>
 </project>

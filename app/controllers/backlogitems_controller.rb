@@ -1,6 +1,9 @@
 class BacklogitemsController < ApplicationController
   before_action :set_backlogitem, only: [:show, :edit, :update, :destroy]
+  before_action :user_signed_in
   helper_method :sort_column, :sort_direction
+  layout '_modal', only: [:new, :edit]
+
 
 
   # GET /backlogitems
@@ -87,6 +90,7 @@ class BacklogitemsController < ApplicationController
 
   # GET /backlogitems/1/edit
   def edit
+    @project_id = @backlogitem.project_id
   end
 
   # POST /backlogitems
@@ -102,7 +106,7 @@ class BacklogitemsController < ApplicationController
         format.html {redirect_to backlogitems_path(:project => @backlogitem.project_id), notice: 'Backlogitem was successfully created.'}
         format.json {render :show, status: :created, location: @backlogitem}
       else
-        format.html {render :new}
+        format.html {redirect_to backlogitems_path(:project => @backlogitem.project_id), alert: @backlogitem.errors}
         format.json {render json: @backlogitem.errors, status: :unprocessable_entity}
       end
     end
@@ -116,7 +120,7 @@ class BacklogitemsController < ApplicationController
         format.html {redirect_to backlogitems_path(:project => @backlogitem.project_id), notice: 'BacklogItem was successfully updated.'}
         format.json {render :show, status: :ok, location: @backlogitem}
       else
-        format.html {render :edit}
+        format.html {redirect_to backlogitems_path(:project => @backlogitem.project_id), alert: @backlogitem.errors}
         format.json {render json: @backlogitem.errors, status: :unprocessable_entity}
       end
     end
@@ -154,5 +158,11 @@ class BacklogitemsController < ApplicationController
 
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
+  def user_signed_in
+    if !user_signed_in?
+      redirect_to protected_index_path
+    end
   end
 end
