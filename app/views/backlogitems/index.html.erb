@@ -65,12 +65,14 @@
 
     <% series_b = {"1 Tag" => 30, "2 Tag" => 29,"3 Tag" => 26} %>
 
-    <h1><%= @tageImSprint%></h1>
-    <h1><%= @back%></h1>
-    <h1><%= @perDay%></h1>
+    <h1><%= @todayDate%></h1>
+    <h1><%= @countDate%></h1>
+    <h1><%=@tageImSprint%></h1>
+    <h1><%=@perDay%></h1>
+    <h1><%=@back%></h1>
 
-    <%= line_chart [{'data': @noises, 'name': 'Estimate'},
-                    {'data': @noises, 'name': 'Afford'}] %>
+    <%= line_chart [{'data': @noises, 'name': 'Ideal'},
+                    {'data': @series_b, 'name': 'Remain'}] %>
 
 
   </div>

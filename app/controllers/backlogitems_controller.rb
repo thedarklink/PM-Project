@@ -16,9 +16,9 @@ class BacklogitemsController < ApplicationController
 
     @tageImSprint = ((Project.first.dueDate) - (Project.first.startDate)).to_i
 
-    @back = Backlogitem.all.sum(:effort)
+    @back = Backlogitem.where(project_id: params[:project]).sum(:effort).to_f
 
-    @perDay = @back / @tageImSprint
+    @perDay = (@back / @tageImSprint).to_f
 
 
     @serieLinea = Array.new(@tageImSprint)
@@ -26,10 +26,48 @@ class BacklogitemsController < ApplicationController
 
     @noises = {}
     @tageImSprint.times do |i|
+      if i == 0
+        @noises[i] = @back-i*@perDay
+      end
+      i = i+1
       @noises[i] = @back-i*@perDay
     end
 
     @series_a = {"1 Tag" => @back, "2 Tag" => @back-@perDay,"3 Tag" => @back-2*@perDay, "4 Tag" => 0}
+
+
+    @todayDate = Date.today
+    @countDate = Project.first.startDate
+    @series_b = {}
+    @aufwand
+    @back1 = Backlogitem.where(project_id: params[:project]).sum(:effort)
+    @count = 0
+
+
+
+    @tageImSprint.times do |i|
+      if @todayDate == @countDate
+        break
+      end
+
+
+      @aufwand = Backlogitem.where(project_id: params[:project]).where(state: "Done").where(updated_at: @countDate).sum(:effort)
+
+      if @aufwand != 0
+        @back1 = @back1 - @aufwand
+        @series_b[i] = @back1
+      elsif @back1 == 0
+        break
+      else
+        @series_b[i] = @back1
+      end
+
+      @countDate = @countDate+1
+      @count = @count+1
+    end
+
+
+
   end
 
   # GET /backlogitems/1

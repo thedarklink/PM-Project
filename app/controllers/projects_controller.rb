@@ -12,6 +12,12 @@ class ProjectsController < ApplicationController
   def show
     @tasks = @project.backlogitems.left_joins(:tasks).select(:tasks)
     @tasksAllCount = @tasks.count
+
+    if @tasksAllCount == 0
+      @tasksAllCount = 1
+    end
+
+
     @tasksDoneCount = @project.backlogitems.left_joins(:tasks)
                           .where(tasks: {state: Task.states[:Done]})
                           .select(:tasks)
