@@ -3,8 +3,9 @@ class WelcomeController < ApplicationController
 
   def index
     @projects = Project.all
-    # TODO: Where über Tasks suchen
+    # TODO: Where über TGasks
     @myprojects = Project.all
+    @mytasks = Task.where(:assignedto => current_user.id).where.not(:state => :Done)
   end
 
 

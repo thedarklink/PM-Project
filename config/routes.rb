@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'burndown/index'
+
   get 'roadmap/index'
 
   get 'protected/index'

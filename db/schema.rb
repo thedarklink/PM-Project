@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 20170717100952) do
     t.date "startDate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "sprint_id"
   end
 
   create_table "roles", force: :cascade do |t|

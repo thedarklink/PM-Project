@@ -1,83 +1,71 @@
-
-
-
 <%= form_with(model: task, local: true) do |form| %>
 
 
-<div class="modal-body">
+    <div class="modal-body">
 
-          <% if task.errors.any? %>
-              <div id="error_explanation">
-                <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+      <% if task.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
-                <ul>
-                  <% task.errors.full_messages.each do |message| %>
-                      <li><%= message %></li>
-                  <% end %>
-                </ul>
-              </div>
-          <% end %>
-
-          <%= form.text_field :backlogitem_id, id: :backlogitem_id %>
-
-
-          <div class="form-group">
-            <%= form.label :title %>
-              <%= form.text_field :title, id: :task_title, :class => 'form-control', validate: true  %>
+            <ul>
+              <% task.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
           </div>
+      <% end %>
 
-          <div class="form-group">
-            <%= form.label :description %>
-              <%= form.text_area :description, id: :task_description, :class => 'form-control' %>
-          </div>
+      <%= form.hidden_field :backlogitem_id, id: :backlogitem_id %>
+      <%= form.hidden_field :author, id: :task_author, :class => 'form-control' %>
 
-          <div class="form-group">
-            <%= form.label :author %>
+      <%= hidden_field_tag :returnUrl, @returnUrl %>
 
-              <%= form.text_field :author, id: :task_author, :class => 'form-control' %>
-          </div>
 
-          <div class="form-group">
-            <%= form.label :creationdate %>
+      <div class="form-group">
+        <%= form.label :title %>
+        <%= form.text_field :title, id: :task_title, :class => 'form-control', validate: true %>
+      </div>
 
-              <%= form.date_select :creationdate, id: :task_creationdate, :class => 'form-control' %>
-          </div>
+      <div class="form-group">
+        <%= form.label :description %>
+        <%= form.text_area :description, id: :task_description, :class => 'form-control' %>
+      </div>
 
-          <div class="form-group">
-            <%= form.label :assignedto %>
+      <div class="form-group">
+        <%= form.label :assignedto %>
+        <%= form.select :assignedto, User.all.collect {|p| [p.email, p.id]}, {include_blank: "Select something"}, {:class => 'form-control'} %>
+      </div>
 
-              <%= form.text_field :assignedto, id: :task_assignedto, :class => 'form-control' %>
-          </div>
+      <div class="form-group">
+        <%= form.label :state %>
+        <%= form.select :state, Task.states.keys, {}, {:class => 'form-control'} %>
 
-          <div class="form-group">
-            <%= form.label :state %>
-            <%= form.select(:state, Task.states.keys) %>
-          </div>
+      </div>
 
-          <div class="form-group">
-            <%= form.label :priority %>
-              <%= form.select(:priorty, Task.priorties.keys) %>
-          </div>
+      <div class="form-group">
+        <%= form.label :priority %>
+        <%= form.select :priorty, Task.priorties.keys, {}, {:class => 'form-control'} %>
+      </div>
 
-          <div class="form-group">
-            <%= form.label :remainingwork %>
-              <%= form.number_field :remainingwork, id: :task_remainingwork, :class => 'form-control' %>
-          </div>
+      <div class="form-group">
+        <%= form.label :remainingwork %>
+        <%= form.number_field :remainingwork, id: :task_remainingwork, :class => 'form-control' %>
+      </div>
 
-          <div class="form-group">
-            <%= form.label :effort%>
-            <%= form.number_field :effort, id: :task_effort, :class => 'form-control' %>
-          </div>
+      <div class="form-group">
+        <%= form.label :effort %>
+        <%= form.number_field :effort, id: :task_effort, :class => 'form-control' %>
+      </div>
 
-          <div class="form-group">
-            <%= form.label :sprint_id%>
-            <%= form.number_field :sprint_id, id: :sprint_id, :class => 'form-control' %>
-          </div>
+      <div class="form-group">
+        <%= form.label :sprint_id %>
+        <%= form.number_field :sprint_id, id: :sprint_id, :class => 'form-control' %>
+      </div>
 
-</div>
-<div class="modal-footer">
-  <%= link_to 'Close', board_index_path(:project => @project_id ), :class => 'btn btn-default' %>
-  <%= form.submit :class => 'btn btn-primary' %>
-</div>
+    </div>
+    <div class="modal-footer">
+      <%= link_to 'Close', @returnUrl, :class => 'btn btn-default' %>
+      <%= form.submit :class => 'btn btn-primary' %>
+    </div>
 <% end %>
 

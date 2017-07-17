@@ -1,6 +1,14 @@
-<div class="container">
-  <h3>Sprints <td><%= link_to '<span class="glyphicon glyphicon-plus"></span>'.html_safe, new_sprint_path(:project => @project.id ) %></td></h3>
 
+
+<h3>
+  <small>
+    Sprints
+  </small>
+  <br/>
+  <%= @project.name %>
+</h3>
+<hr/>
+<%= link_to '<span class="glyphicon glyphicon-plus"></span> Sprint anlegen'.html_safe, new_sprint_path(:project => @project.id ), data: {toggle: "modal", target: "#modal"} %>
 </div>
 <hr/>
 
@@ -16,9 +24,8 @@
   </tr>
   </thead>
   <tbody>
-  <% Sprint.all.each do |sprint| %>
+  <% @sprints.each do |sprint| %>
       <tr>
-
         <td><%= link_to sprint.name,  sprint %></td>
         <td><%= sprint.startDate %></td>
         <td><%= sprint.effort %></td>
@@ -30,6 +37,3 @@
 </table>
 
 </div>
-<hr/>
-
-

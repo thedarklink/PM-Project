@@ -29,6 +29,13 @@ class TasksController < ApplicationController
   # GET /tasks/1/edit
   def edit
     @project_id = @task.backlogitem.project_id
+    @users = User.all
+
+    if params[:returnUrl]
+      @returnUrl = params[:returnUrl]
+    else
+      @returnUrl = board_index_path(:project => @project_id )
+    end
   end
 
   # POST /tasks
@@ -51,12 +58,18 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
+    if params[:returnUrl]
+      @returnUrl = params[:returnUrl]
+    else
+      @returnUrl = board_index_path(:project => @task.backlogitem.project_id )
+    end
+
     respond_to do |format|
       if @task.update(task_params)
-        format.html {redirect_to board_index_path(project: @task.backlogitem.project_id), notice: 'Task was successfully updated.'}
+        format.html {redirect_to @returnUrl, notice: 'Task was successfully updated.'}
         format.json {render :show, status: :ok, location: @task}
       else
-        format.html {redirect_to board_index_path(project: @task.backlogitem.project_id), alert: @task.errors}
+        format.html {redirect_to @returnUrl, alert: @task.errors}
         format.json {render json: @task.errors, status: :unprocessable_entity}
       end
     end

@@ -4,7 +4,6 @@
   </small>
   <br/>
   <%= @project.name %>
-
 </h3>
 <hr/>
 
@@ -14,10 +13,9 @@
   <thead>
     <tr>
       <th><%= sort_link "title" %></th>
-      <th>Creationdate</th>
+      <th>Priorty</th>
       <th>Assignedto</th>
       <th>State</th>
-      <th>Priorty</th>
       <th>Effort</th>
       <th colspan="2"></th>
     </tr>
@@ -27,37 +25,13 @@
     <% @backlogitems.each do |backlogitem| %>
       <tr>
         <td><%= link_to backlogitem.title, edit_backlogitem_path(backlogitem), data: {toggle: "modal", target: "#modal"}  %></td>
-        <td><%= backlogitem.creationdate %></td>
+        <td><%= backlogitem.priorty %></td>
         <td><%= backlogitem.assignedto %></td>
         <td><%= backlogitem.state %></td>
-        <td><%= backlogitem.priorty %></td>
         <td><%= backlogitem.effort %></td>
         <td><%= link_to 'Löschen', backlogitem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<!-- Modal -->
-<div class="modal fade" id="modal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-    </div>
-  </div>
-</div>
-
-
-<div class="row">
-
-  <!-- Line Chart - Single Series -->
-  <div class="col-xs-6">
-    <h3>Visits By Day</h3>
-
-
-
-    <%= line_chart [{'data': @serieAverage, 'name': 'Ideal'},
-                    {'data': @serieReal, 'name': 'Remain'}], {library: {hAxis: {title: "Tage"}, vAxis: {title: "Scrum Points"}}} %>
-
-
-  </div>
-</div>
+>

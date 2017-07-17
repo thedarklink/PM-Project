@@ -1,0 +1,22 @@
+<div class="container">
+
+  <h3>
+    <small>Burndown Chart</small>
+    <br/>
+    <%= @project.name %>
+  </h3>
+</div>
+<hr/>
+<div class="container">
+  TODO: Hier Sprints auswählen
+</div>
+<hr>
+<div class="container">
+
+  <!-- Line Chart - Single Series -->
+  <div class="col-xs-12">
+    <%= line_chart [{'data': @serieAverage, 'name': 'Ideal'},
+                    {'data': @serieReal, 'name': 'Remain'}],
+                   {library: {hAxis: {title: "Tage"}, vAxis: {title: "Story Points"}}} %>
+  </div>
+</div>

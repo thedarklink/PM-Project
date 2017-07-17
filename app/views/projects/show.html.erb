@@ -35,7 +35,9 @@
 
   <%= link_to 'Backlog', backlogitems_path(:project => @project.id) %> |
   <%= link_to 'Scrum Board', board_index_path(:project => @project.id) %> |
-  <%= link_to 'Sprints', sprints_path(:project => @project.id) %>
+  <%= link_to 'Sprints', sprints_path(:project => @project.id) %> |
+  <%= link_to 'Burndown Chart', burndown_index_path(:project => @project.id) %>
+
 
 </div>
 
