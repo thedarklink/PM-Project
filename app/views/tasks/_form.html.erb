@@ -60,6 +60,7 @@
       <div class="form-group">
         <%= form.label :sprint_id %>
         <%= form.number_field :sprint_id, id: :sprint_id, :class => 'form-control' %>
+        <%= form.select :sprint_id, Sprint.where(:project_id => @task.backlogitem.project_id).collect {|p| [p.name, p.id]}, {include_blank: "Select something"}, {:class => 'form-control'} %>
       </div>
 
     </div>

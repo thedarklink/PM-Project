@@ -17,7 +17,8 @@
       <th>Assignedto</th>
       <th>State</th>
       <th>Effort</th>
-      <th colspan="2"></th>
+      <th>Sprint</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -29,9 +30,9 @@
         <td><%= backlogitem.assignedto %></td>
         <td><%= backlogitem.state %></td>
         <td><%= backlogitem.effort %></td>
+        <td><%= backlogitem.sprint_id %></td>
         <td><%= link_to 'Löschen', backlogitem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
->

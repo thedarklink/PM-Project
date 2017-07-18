@@ -24,6 +24,7 @@ class TasksController < ApplicationController
       @project_id = @task.backlogitem.project_id
     end
     @task.author = current_user.id
+    @returnUrl = board_index_path(:project => @project_id )
   end
 
   # GET /tasks/1/edit
