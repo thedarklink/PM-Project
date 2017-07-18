@@ -1,44 +1,49 @@
 <%= form_with(model: sprint, local: true) do |form| %>
-  <% if sprint.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(sprint.errors.count, "error") %> prohibited this sprint from being saved:</h2>
+    <div class="modal-body">
 
-      <ul>
-      <% sprint.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% if sprint.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(sprint.errors.count, "error") %> prohibited this sprint from being saved:</h2>
+
+            <ul>
+              <% sprint.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
       <% end %>
-      </ul>
+
+      <%= form.hidden_field :project_id, id: :sprint_project_id, :class => 'form-control' %>
+      <%= hidden_field_tag :returnUrl, @returnUrl %>
+
+      <div class="form-group">
+        <%= form.label :name %>
+        <%= form.text_field :name, id: :sprint_name, :class => 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :startDate %>
+        <%= form.date_select :startDate, id: :sprint_startDate, :class => 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :endDate %>
+        <%= form.date_select :endDate, id: :sprint_endDate, :class => 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :effort %>
+        <%= form.number_field :effort, id: :sprint_effort, :class => 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :remainingWork %>
+        <%= form.number_field :remainingWork, id: :sprint_remainingWork, :class => 'form-control' %>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :sprint_name %>
-  </div>
-
-    <%= form.text_field :project_id, id: :sprint_project_id %>
-
-  <div class="field">
-    <%= form.label :startDate %>
-    <%= form.date_select :startDate, id: :sprint_startDate %>
-  </div>
-
-  <div class="field">
-    <%= form.label :endDate %>
-    <%= form.date_select :endDate, id: :sprint_endDate %>
-  </div>
-
-  <div class="field">
-    <%= form.label :effort %>
-    <%= form.number_field :effort, id: :sprint_effort %>
-  </div>
-
-  <div class="field">
-    <%= form.label :remainingWork %>
-    <%= form.number_field :remainingWork, id: :sprint_remainingWork %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="modal-footer">
+      <%= link_to 'Close', @returnUrl, :class => 'btn btn-default' %>
+      <%= form.submit :class => 'btn btn-primary' %>
+    </div>
 <% end %>

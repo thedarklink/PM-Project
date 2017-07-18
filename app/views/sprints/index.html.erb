@@ -1,5 +1,3 @@
-
-
 <h3>
   <small>
     Sprints
@@ -8,32 +6,28 @@
   <%= @project.name %>
 </h3>
 <hr/>
-<%= link_to '<span class="glyphicon glyphicon-plus"></span> Sprint anlegen'.html_safe, new_sprint_path(:project => @project.id ), data: {toggle: "modal", target: "#modal"} %>
-</div>
+<%= link_to '<span class="glyphicon glyphicon-plus"></span> Sprint anlegen'.html_safe, new_sprint_path(:project => @project.id, :returnUrl => request.original_url ), data: {toggle: "modal", target: "#modal"} %>
 <hr/>
 
 
 <table class="table">
   <thead>
   <tr>
-    <th>Titel</th>
+    <th>name</th>
     <th>startDate</th>
     <th>endDate</th>
-    <th>Aufwand</th>
-    <th colspan="3"></th>
+    <th>remainingWork</th>
   </tr>
   </thead>
   <tbody>
   <% @sprints.each do |sprint| %>
       <tr>
-        <td><%= link_to sprint.name,  sprint %></td>
+        <td><%= link_to sprint.name,  edit_sprint_path(sprint, :returnUrl => request.original_url), data: {toggle: "modal", target: "#modal"} %></td>
         <td><%= sprint.startDate %></td>
         <td><%= sprint.endDate %></td>
         <td><%= sprint.remainingWork %></td>
-        <td><%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_sprint_path(sprint) %></td>
       </tr>
   <% end %>
   </tbody>
 </table>
 
-</div>

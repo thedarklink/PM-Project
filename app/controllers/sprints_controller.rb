@@ -27,10 +27,22 @@ class SprintsController < ApplicationController
     @sprint.name = 'Sprint ' + @newSprint.to_s
     @sprint.startDate = Time.now
     @sprint.endDate = Time.now.days_ago(-14)
+
+    if params[:returnUrl]
+      @returnUrl = params[:returnUrl]
+    else
+      @returnUrl = sprints_path(:project => @project_id)
+    end
   end
 
   # GET /sprints/1/edit
   def edit
+
+    if params[:returnUrl]
+      @returnUrl = params[:returnUrl]
+    else
+      @returnUrl = sprints_path(:project => @project_id)
+    end
   end
 
   # POST /sprints
@@ -38,12 +50,18 @@ class SprintsController < ApplicationController
   def create
     @sprint = Sprint.new(sprint_params)
 
+    if params[:returnUrl]
+      @returnUrl = params[:returnUrl]
+    else
+      @returnUrl = sprints_path(:project => @project_id)
+    end
+
     respond_to do |format|
       if @sprint.save
-        format.html {redirect_to @sprint, notice: 'Sprint was successfully created.'}
+        format.html {redirect_to @returnUrl, notice: 'Sprint was successfully created.'}
         format.json {render :show, status: :created, location: @sprint}
       else
-        format.html {render :new}
+        format.html {redirect_to @returnUrl, alert: @sprint.errors}
         format.json {render json: @sprint.errors, status: :unprocessable_entity}
       end
     end
@@ -52,12 +70,19 @@ class SprintsController < ApplicationController
   # PATCH/PUT /sprints/1
   # PATCH/PUT /sprints/1.json
   def update
+
+    if params[:returnUrl]
+      @returnUrl = params[:returnUrl]
+    else
+      @returnUrl = sprints_path(:project => @project_id)
+    end
+
     respond_to do |format|
       if @sprint.update(sprint_params)
-        format.html {redirect_to @sprint, notice: 'Sprint was successfully updated.'}
+        format.html {redirect_to @returnUrl, notice: 'Sprint was successfully updated.'}
         format.json {render :show, status: :ok, location: @sprint}
       else
-        format.html {render :edit}
+        format.html {redirect_to @returnUrl, alert: @sprint.errors}
         format.json {render json: @sprint.errors, status: :unprocessable_entity}
       end
     end
