@@ -63,6 +63,8 @@
         <%= form.select :sprint_id, Sprint.where(:project_id => @task.backlogitem.project_id).collect {|p| [p.name, p.id]}, {include_blank: "Select something"}, {:class => 'form-control'} %>
       </div>
 
+
+
     </div>
     <div class="modal-footer">
       <%= link_to 'Close', @returnUrl, :class => 'btn btn-default' %>
