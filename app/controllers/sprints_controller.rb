@@ -8,7 +8,7 @@ class SprintsController < ApplicationController
   # GET /sprints.json
   def index
     if params[:project]
-      @sprints = Sprint.where(project_id: params[:project])
+      @sprints = Sprint.where(project_id: params[:project]).order(:id)
       @project = Project.find(params[:project])
     end
   end
@@ -23,6 +23,10 @@ class SprintsController < ApplicationController
   def new
     @sprint = Sprint.new
     @sprint.project = Project.find(params[:project])
+    @newSprint = Sprint.where(project_id: params[:project]).count + 1
+    @sprint.name = 'Sprint ' + @newSprint.to_s
+    @sprint.startDate = Time.now
+    @sprint.endDate = Time.now.days_ago(-14)
   end
 
   # GET /sprints/1/edit

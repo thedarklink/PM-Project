@@ -5,27 +5,21 @@
   <%= @project.name %>
 </h3>
 <hr/>
+<%= form_tag(board_index_path, :method => "get") do %>
+    <%= hidden_field_tag :project, @project.id %>
 
-
-
-<div class="row">
-  <div style="width: 80px; vertical-align: middle; padding-top: 5px;" class="col-xs-1">
-    Sprint
-  </div>
-  <div class="col-xs-3">
-    <select class="form-control">
-      <option>Alle</option>
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div>
-  <div>
-    <button class="btn btn-default" type="submit">Aktualisieren</button>
-  </div>
-</div>
+    <div class="row">
+      <div style="width: 80px; vertical-align: middle; padding-top: 5px;" class="col-xs-1">
+        <%= label_tag(:sprint, "Sprint") %>
+      </div>
+      <div class="col-xs-3">
+        <%= select_tag :sprint, options_for_select(@sprints.all.collect{|mt| [mt.name, mt.id]}.insert(0, "All"), :selected => @sprint_id), :class => 'form-control' %>
+      </div>
+      <div>
+        <%= submit_tag("Refresh", :class => 'btn btn-default') %>
+      </div>
+    </div>
+<% end %>
 <hr>
 <table class="table table-bordered">
   <thead>
@@ -49,13 +43,13 @@
             </div>
           </div>
           <br>
-          <%= link_to '+ Task hinzufügen', new_task_path(:backlog => item.id), data: {toggle: "modal", target: "#modal"} %>
+          <%= link_to '+ Task hinzufügen', new_task_path(:backlog => item.id, :returnUrl => request.original_url), data: {toggle: "modal", target: "#modal"} %>
         </td>
         <td width="27%">
           <% item.tasks.where(:state => :New).each do |t| %>
               <div class="task">
                 <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
-                <%= link_to t.title, edit_task_path(:id => t.id), data: {toggle: "modal", target: "#modal"} %>
+                <%= link_to t.title, edit_task_path(:id => t.id, :returnUrl => request.original_url), data: {toggle: "modal", target: "#modal"} %>
               </div>
           <% end %>
           <br>
@@ -64,7 +58,7 @@
           <% item.tasks.where(:state => :InProgress).each do |t| %>
               <div class="task">
                 <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
-                <%= link_to t.title, edit_task_path(:id => t.id), data: {toggle: "modal", target: "#modal"} %>
+                <%= link_to t.title, edit_task_path(:id => t.id, :returnUrl => request.original_url), data: {toggle: "modal", target: "#modal"} %>
               </div>
           <% end %>
         </td>
@@ -72,7 +66,7 @@
           <% item.tasks.where(:state => :Done).each do |t| %>
               <div class="task">
                 <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
-                <%= link_to t.title, edit_task_path(:id => t.id), data: {toggle: "modal", target: "#modal"} %>
+                <%= link_to t.title, edit_task_path(:id => t.id, :returnUrl => request.original_url), data: {toggle: "modal", target: "#modal"} %>
               </div>
           <% end %>
         </td>

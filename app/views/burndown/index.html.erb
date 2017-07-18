@@ -1,27 +1,27 @@
 <div class="container">
-
   <h3>
     <small>Burndown Chart</small>
     <br/>
-
+    <%= @project.name %>
   </h3>
 </div>
 <hr/>
 <div class="container">
-  <%
-    @sprints.each do |i|
-      %>
-        <h1>
-          <%= link_to i.name, burndown_index_path(:project => @project.id, :sprint => i.id) %>
-        </h1>
-      <%= @tageImSprint %>
-      <%= @scrumPoints %>
-      <%= @averagePoints %>
-      <%= @aufwand %>
-      <%
-    end
-  %>
+  <%= form_tag(burndown_index_path, :method => "get") do %>
+      <%= hidden_field_tag :project, @project.id %>
 
+      <div class="row">
+        <div style="width: 80px; vertical-align: middle; padding-top: 5px;" class="col-xs-1">
+          <%= label_tag(:sprint, "Sprint") %>
+        </div>
+        <div class="col-xs-3">
+          <%= select_tag :sprint, options_for_select(@sprints.all.collect{|mt| [mt.name, mt.id]}, :selected => @sprint_id), :class => 'form-control' %>
+        </div>
+        <div>
+          <%= submit_tag("Refresh", :class => 'btn btn-default') %>
+        </div>
+      </div>
+  <% end %>
 </div>
 <hr>
 <div class="container">

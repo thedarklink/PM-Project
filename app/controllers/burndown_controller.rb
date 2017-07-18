@@ -1,12 +1,13 @@
 class BurndownController < ApplicationController
+
   def index
 
-    @sprints = Sprint.where(project_id: params[:project])
+    @sprints = Sprint.where(project_id: params[:project]).order(:id)
     @project = Project.find(params[:project])
-    @sprint
+    @sprint_id = params[:sprint]
+
     if(params[:sprint])
       @sprint = Sprint.find(params[:sprint])
-
       #Ideale Linie
       @tageImSprint = ((@sprint.endDate) - (@sprint.startDate)).to_i
       @scrumPoints = Task.where(sprint_id: @sprint.id).sum(:effort).to_f
@@ -22,7 +23,7 @@ class BurndownController < ApplicationController
       end
 
       #Tatsächliche Linie
-      @todayDate = Date.today
+      @todayDate = Date.today.days_ago(-1)
       @countDate = @sprint.startDate
       @serieReal = {}
       @scrumPointsReal = Task.where(sprint_id: @sprint.id).sum(:effort).to_f

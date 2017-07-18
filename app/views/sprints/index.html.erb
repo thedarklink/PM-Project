@@ -17,8 +17,8 @@
   <thead>
   <tr>
     <th>Titel</th>
-    <th>Beschreibung</th>
-    <th>Status</th>
+    <th>startDate</th>
+    <th>endDate</th>
     <th>Aufwand</th>
     <th colspan="3"></th>
   </tr>
@@ -28,7 +28,7 @@
       <tr>
         <td><%= link_to sprint.name,  sprint %></td>
         <td><%= sprint.startDate %></td>
-        <td><%= sprint.effort %></td>
+        <td><%= sprint.endDate %></td>
         <td><%= sprint.remainingWork %></td>
         <td><%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_sprint_path(sprint) %></td>
       </tr>

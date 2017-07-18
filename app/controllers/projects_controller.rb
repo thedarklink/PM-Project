@@ -24,6 +24,20 @@ class ProjectsController < ApplicationController
 
     @donePercantage = ((@tasksDoneCount.to_f / @tasksAllCount) * 100)
     @inprogressPercantage = ((@tasksInProgressCount.to_f / @tasksAllCount) * 100)
+
+    @current_project = @project.name
+
+    if @donePercantage.nan?
+      @donePercantage = 0
+    else
+      @donePercantage = @donePercantage.to_i
+    end
+
+    if @inprogressPercantage.nan?
+      @inprogressPercantage = 0
+    else
+      @inprogressPercantage = @inprogressPercantage.to_i
+    end
   end
 
   # GET /projects/new

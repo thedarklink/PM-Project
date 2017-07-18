@@ -6,7 +6,21 @@ class BoardController < ApplicationController
   def index
     if params[:project]
       @project = Project.find(params[:project])
-      @items = Backlogitem.left_joins(:tasks).distinct.where(project_id: params[:project])
+      @sprints = Sprint.where(project_id: params[:project]).order(:id)
+
+      @sprint_id = params[:sprint]
+      if params[:sprint] == 'All'
+        @items = Backlogitem.left_joins(:tasks).distinct
+                     .where(project_id: params[:project])
+                     .sort_by(&:created_at)
+
+      else
+        @items = Backlogitem.left_joins(:tasks).distinct
+                     .where(project_id: params[:project])
+                     .where(sprint_id: params[:sprint])
+                     .sort_by(&:created_at)
+      end
+
     end
   end
 

@@ -15,16 +15,23 @@ class TasksController < ApplicationController
   end
 
 
-
   # GET /tasks/new
   def new
     @task = Task.new
     if params[:backlog]
       @task.backlogitem = Backlogitem.find(params[:backlog])
       @project_id = @task.backlogitem.project_id
+      if (@task.backlogitem.sprint)
+        @task.sprint = Sprint.find(@task.backlogitem.sprint.id)
+      end
     end
     @task.author = current_user.id
-    @returnUrl = board_index_path(:project => @project_id )
+
+    if params[:returnUrl]
+      @returnUrl = params[:returnUrl]
+    else
+      @returnUrl = board_index_path(:project => @project_id, :sprint => 'All')
+    end
   end
 
   # GET /tasks/1/edit
@@ -35,7 +42,7 @@ class TasksController < ApplicationController
     if params[:returnUrl]
       @returnUrl = params[:returnUrl]
     else
-      @returnUrl = board_index_path(:project => @project_id )
+      @returnUrl = board_index_path(:project => @project_id, :sprint => 'All')
     end
   end
 
@@ -45,12 +52,18 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.backlogitem = Backlogitem.where(id: @task.backlogitem_id).first!
 
+    if params[:returnUrl]
+      @returnUrl = params[:returnUrl]
+    else
+      @returnUrl = board_index_path(:project => @task.backlogitem.project_id, :sprint => 'All')
+    end
+
     respond_to do |format|
       if @task.save
-        format.html {redirect_to board_index_path(project: @task.backlogitem.project_id), notice: 'Task was successfully created.'}
+        format.html {redirect_to @returnUrl, notice: 'Task was successfully created.'}
         format.json {render :show, status: :created, location: @task}
       else
-        format.html {redirect_to board_index_path(project: @task.backlogitem.project_id), alert: @task.errors}
+        format.html {redirect_to @returnUrl, alert: @task.errors}
         format.json {render json: @task.errors, status: :unprocessable_entity}
       end
     end
@@ -62,7 +75,7 @@ class TasksController < ApplicationController
     if params[:returnUrl]
       @returnUrl = params[:returnUrl]
     else
-      @returnUrl = board_index_path(:project => @task.backlogitem.project_id )
+      @returnUrl = board_index_path(:project => @task.backlogitem.project_id, :sprint => 'All')
     end
 
     respond_to do |format|
