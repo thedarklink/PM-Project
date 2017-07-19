@@ -13,3 +13,23 @@ td.Medium {
 td.High {
   border-left: 10px solid darkred;
 }
+
+.label.Done {
+  background-color: darkgreen;
+}
+
+.label.Approved {
+  background-color: #3498db;
+}
+
+.label.Removed {
+  background-color: darkred;
+}
+
+.label {
+  background-color: grey;
+}
+
+.label.New {
+  background-color: sandybrown;
+}

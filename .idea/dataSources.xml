@@ -49,5 +49,15 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql:scrum-pm_production</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="Heroku Database" uuid="b767c5e7-cf24-4ec7-bc8b-0ec9e0bd1daa">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://ec2-23-23-244-83.compute-1.amazonaws.com:5432/d93qpt0q0u6u6t</jdbc-url>
+      <driver-properties>
+        <property name="ssl" value="true" />
+        <property name="sslfactory" value="org.postgresql.ssl.NonValidatingFactory" />
+      </driver-properties>
+    </data-source>
   </component>
 </project>
