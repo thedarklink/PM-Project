@@ -27,17 +27,10 @@
       <tr>
         <td class="<%= backlogitem.priorty %>"><%= link_to backlogitem.title, edit_backlogitem_path(backlogitem), data: {toggle: "modal", target: "#modal"}  %></td>
         <td><%= backlogitem.priorty %></td>
-<<<<<<< HEAD
         <td><%= backlogitem.assignedto %></td>
         <td>
           <span class="label <%= backlogitem.state %>"><%= backlogitem.state %></span>
         </td>
-=======
-        <td><% if backlogitem.assignedto.to_i != 0 %>
-              <%=  User.find(backlogitem.assignedto.to_i).email %>
-            <% end %></td>
-        <td><%= backlogitem.state %></td>
->>>>>>> af5c581... Burndown Chart gefixt, Schönheitssachen
         <td><%= backlogitem.effort %></td>
         <td><%= backlogitem.sprint_id %></td>
         <td><%= link_to 'Löschen', backlogitem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
