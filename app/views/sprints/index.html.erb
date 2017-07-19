@@ -25,7 +25,14 @@
         <td><%= link_to sprint.name,  edit_sprint_path(sprint, :returnUrl => request.original_url), data: {toggle: "modal", target: "#modal"} %></td>
         <td><%= sprint.startDate.strftime("%d.%m.%Y") %></td>
         <td><%= sprint.endDate.strftime("%d.%m.%Y") %></td>
-        <td><%= sprint.remainingWork %></td>
+        <td>
+          <% if sprint.startDate < Date.today && sprint.endDate > Date.today %>
+              <span class="label label-warning">In Progress</span>
+        <% end %>
+          <% if sprint.startDate < Date.today && sprint.endDate < Date.today %>
+              <span class="label label-success">Done</span>
+          <% end %>
+        </td>
       </tr>
   <% end %>
   </tbody>
