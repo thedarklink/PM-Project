@@ -4,7 +4,7 @@ class Backlogitem < ApplicationRecord
   has_many :tasks
 
   enum state: [ :New, :Approved, :Committed, :Done, :Removed ]
-  enum priorty: [:Low, :Normal, :High ]
+  enum priorty: [:Low, :Medium, :High ]
 
   validates :title, :presence => true
 

@@ -32,7 +32,7 @@
       <tbody>
       <% @mytasks.each do |task| %>
           <tr>
-            <td><%= link_to task.title, edit_task_path(:id => task.id, :returnUrl => request.original_url), data: {toggle: "modal", target: "#modal"} %></td>
+            <td class="<%= task.priority %>"><%= link_to task.title, edit_task_path(:id => task.id, :returnUrl => request.original_url), data: {toggle: "modal", target: "#modal"} %></td>
             <td><%= task.state %></td>
             <td><%= task.priority %></td>
             <td><%= task.remainingwork %></td>
