@@ -12,13 +12,13 @@ class BoardController < ApplicationController
       if params[:sprint] == 'All'
         @items = Backlogitem.left_joins(:tasks).distinct
                      .where(project_id: params[:project])
-                     .sort_by(&:created_at)
+                     .order(:created_at)
 
       else
         @items = Backlogitem.left_joins(:tasks).distinct
                      .where(project_id: params[:project])
                      .where(sprint_id: params[:sprint])
-                     .sort_by(&:created_at)
+                     .order(:created_at)
       end
 
     end

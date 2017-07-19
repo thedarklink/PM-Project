@@ -47,7 +47,11 @@
         <div class="col-md-6">
           <div class="form-group">
             <%= form.label :priority %>
+<<<<<<< HEAD
+            <%= form.select :priority, Task.priorities.keys, {}, {:class => 'form-control'} %>
+=======
             <%= form.select :priorty, Task.priorties.keys, {}, {:class => 'form-control'} %>
+>>>>>>> af5c581... Burndown Chart gefixt, Schönheitssachen
           </div>
         </div>
         <div class="col-md-6">

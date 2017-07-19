@@ -35,7 +35,7 @@
   <% @items.each do |item| %>
       <tr>
         <td style="width: 220px;">
-          <div class="userstory">
+          <div class="userstory <%= item.priorty %>">
             <div class="caption">
               <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
               <h5><%= item.title %></h5>
@@ -47,7 +47,7 @@
         </td>
         <td width="27%">
           <% item.tasks.where(:state => :New).each do |t| %>
-              <div class="task">
+              <div class="task <%= t.priority %>">
                 <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
                 <%= link_to t.title, edit_task_path(:id => t.id, :returnUrl => request.original_url), data: {toggle: "modal", target: "#modal"} %>
               </div>
@@ -56,7 +56,7 @@
         </td>
         <td width="27%">
           <% item.tasks.where(:state => :InProgress).each do |t| %>
-              <div class="task">
+              <div class="task <%= t.priority %>">
                 <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
                 <%= link_to t.title, edit_task_path(:id => t.id, :returnUrl => request.original_url), data: {toggle: "modal", target: "#modal"} %>
               </div>
@@ -64,7 +64,7 @@
         </td>
         <td width="27%">
           <% item.tasks.where(:state => :Done).each do |t| %>
-              <div class="task">
+              <div class="task <%= t.priority %>">
                 <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
                 <%= link_to t.title, edit_task_path(:id => t.id, :returnUrl => request.original_url), data: {toggle: "modal", target: "#modal"} %>
               </div>

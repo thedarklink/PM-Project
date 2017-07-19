@@ -1,3 +1,35 @@
 // Place all the styles related to the backlogitems controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+td.Low {
+  border-left: 10px solid cornflowerblue;
+}
+
+td.Medium {
+  border-left: 10px solid sandybrown;
+}
+
+td.High {
+  border-left: 10px solid darkred;
+}
+
+.label.Done {
+  background-color: darkgreen;
+}
+
+.label.Approved {
+  background-color: #3498db;
+}
+
+.label.Removed {
+  background-color: darkred;
+}
+
+.label {
+  background-color: grey;
+}
+
+.label.New {
+  background-color: sandybrown;
+}
