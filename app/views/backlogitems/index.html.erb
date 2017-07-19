@@ -27,9 +27,7 @@
       <tr>
         <td><%= link_to backlogitem.title, edit_backlogitem_path(backlogitem), data: {toggle: "modal", target: "#modal"}  %></td>
         <td><%= backlogitem.priorty %></td>
-        <td><% if backlogitem.assignedto.to_i != 0 %>
-              <%=  User.find(backlogitem.assignedto.to_i).email %>
-            <% end %></td>
+        <td><%= backlogitem.assignedto %></td>
         <td><%= backlogitem.state %></td>
         <td><%= backlogitem.effort %></td>
         <td><%= backlogitem.sprint_id %></td>

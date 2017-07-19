@@ -34,23 +34,15 @@
         <%= form.select :assignedto, User.all.collect {|p| [p.email, p.id]}, {include_blank: "Select something"}, {:class => 'form-control'} %>
       </div>
 
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <%= form.label :priority %>
-            <%= form.select :priorty, Backlogitem.priorties.keys, {}, {:class => 'form-control'} %>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <% if !@backlogitem.id.nil? %>
-              <div class="form-group">
-                <%= form.label :state %>
-                <%= form.select :state, Backlogitem.states.keys, {}, {:class => 'form-control'} %>
-              </div>
-          <% else %>
-              <%= form.hidden_field :state, value: :New %>
-          <% end %>
-        </div>
+      <div class="form-group">
+        <%= form.label :state %>
+        <%= form.select(:state, Backlogitem.states.keys) %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :priorty %>
+        <%= form.select(:priorty, Backlogitem.priorties.keys) %>
+
       </div>
 
       <div class="form-group">
