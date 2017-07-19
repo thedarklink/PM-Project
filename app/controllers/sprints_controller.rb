@@ -37,11 +37,18 @@ class SprintsController < ApplicationController
 
   # GET /sprints/1/edit
   def edit
-
     if params[:returnUrl]
       @returnUrl = params[:returnUrl]
     else
       @returnUrl = sprints_path(:project => @project_id)
+    end
+
+    if @sprint.startDate < Date.today
+      @sprintstarted = 'disabled'
+    end
+
+    if Date.today < @sprint.endDate
+      @sprintInProgress = 'disabled'
     end
   end
 
