@@ -23,8 +23,8 @@
   <% @sprints.each do |sprint| %>
       <tr>
         <td><%= link_to sprint.name,  edit_sprint_path(sprint, :returnUrl => request.original_url), data: {toggle: "modal", target: "#modal"} %></td>
-        <td><%= sprint.startDate %></td>
-        <td><%= sprint.endDate %></td>
+        <td><%= sprint.startDate.strftime("%d.%m.%Y") %></td>
+        <td><%= sprint.endDate.strftime("%d.%m.%Y") %></td>
         <td><%= sprint.remainingWork %></td>
       </tr>
   <% end %>

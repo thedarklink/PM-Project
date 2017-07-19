@@ -24,8 +24,8 @@
         <th>Title</th>
         <th>State</th>
         <th>Priority</th>
-        <th>Remainingwork</th>
         <th>Effort</th>
+        <th>Sprint</th>
       </tr>
       </thead>
 
@@ -35,9 +35,13 @@
             <td class="<%= task.priority %>"><%= link_to task.title, edit_task_path(:id => task.id, :returnUrl => request.original_url), data: {toggle: "modal", target: "#modal"} %></td>
             <td><%= task.state %></td>
             <td><%= task.priority %></td>
-            <td><%= task.remainingwork %></td>
             <td><%= task.effort %></td>
-            <td><%= task.sprint_id %></td>
+            <td>
+              <% if task.sprint_id.to_i != 0 %>
+                  <%= Sprint.find(task.sprint_id.to_i).name %>
+              <% end %>
+            </td>
+            </td>
           </tr>
       <% end %>
       </tbody>

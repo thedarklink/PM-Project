@@ -7,34 +7,42 @@
 </h3>
 <hr/>
 
-<%= link_to '+ Backlogitem hinzufügen', new_backlogitem_path(:project => @project.id ),  data: {toggle: "modal", target: "#modal"} %>
+<%= link_to '+ Backlogitem hinzufügen', new_backlogitem_path(:project => @project.id), data: {toggle: "modal", target: "#modal"} %>
 <hr/>
 <table class="table">
   <thead>
-    <tr>
-      <th><%= sort_link "title" %></th>
-      <th>Priorty</th>
-      <th>Assignedto</th>
-      <th>State</th>
-      <th>Effort</th>
-      <th>Sprint</th>
-      <th></th>
-    </tr>
+  <tr>
+    <th><%= sort_link "title" %></th>
+    <th>Priorty</th>
+    <th>Assignedto</th>
+    <th>State</th>
+    <th>Effort</th>
+    <th>Sprint</th>
+    <th></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @backlogitems.each do |backlogitem| %>
+  <% @backlogitems.each do |backlogitem| %>
       <tr>
-        <td class="<%= backlogitem.priorty %>"><%= link_to backlogitem.title, edit_backlogitem_path(backlogitem), data: {toggle: "modal", target: "#modal"}  %></td>
+        <td class="<%= backlogitem.priorty %>"><%= link_to backlogitem.title, edit_backlogitem_path(backlogitem), data: {toggle: "modal", target: "#modal"} %></td>
         <td><%= backlogitem.priorty %></td>
-        <td><%= backlogitem.assignedto %></td>
+        <td>
+          <% if backlogitem.assignedto.to_i != 0 %>
+              <%= User.find(backlogitem.assignedto.to_i).email %>
+          <% end %></td>
         <td>
           <span class="label <%= backlogitem.state %>"><%= backlogitem.state %></span>
         </td>
         <td><%= backlogitem.effort %></td>
-        <td><%= backlogitem.sprint_id %></td>
-        <td><%= link_to 'Löschen', backlogitem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <% if backlogitem.sprint_id.to_i != 0 %>
+              <%= Sprint.find(backlogitem.sprint_id.to_i).name %>
+          <% end %>
+        </td>
+        <td>
+        <td><%= link_to 'Löschen', backlogitem, method: :delete, data: {confirm: 'Are you sure?'} %></td>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
