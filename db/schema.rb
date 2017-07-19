@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170719194718) do
+ActiveRecord::Schema.define(version: 20170719200936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20170719194718) do
     t.date "updated_at", null: false
     t.integer "project_id"
     t.bigint "sprint_id"
+    t.text "acceptancecriterion"
     t.index ["sprint_id"], name: "index_backlogitems_on_sprint_id"
   end
 
@@ -61,6 +62,7 @@ ActiveRecord::Schema.define(version: 20170719194718) do
     t.datetime "updated_at", null: false
     t.integer "project_id"
     t.text "retroperspective"
+    t.text "sprintreview"
   end
 
   create_table "tasks", force: :cascade do |t|
