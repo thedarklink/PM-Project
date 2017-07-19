@@ -23,13 +23,14 @@ class BurndownController < ApplicationController
       end
 
       #Tatsächliche Linie
+      if @sprint.startDate < Date.today
       @todayDate = Date.today.days_ago(-1)
       @countDate = @sprint.startDate
       @serieReal = {}
       @scrumPointsReal = Task.where(sprint_id: @sprint.id).sum(:effort).to_f
       @count = 0
 
-      @tageImSprint.times do |i|
+      (@tageImSprint + 1).times do |i|
         if @todayDate == @countDate
           break
         end
@@ -47,6 +48,7 @@ class BurndownController < ApplicationController
 
         @countDate = @countDate+1
         @count = @count+1
+        end
       end
     end
   end

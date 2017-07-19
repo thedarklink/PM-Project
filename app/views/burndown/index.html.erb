@@ -28,9 +28,17 @@
 
   <% if @sprint != nil%>
       <div class="col-xs-12">
-        <%= line_chart [{'data': @serieAverage, 'name': 'Ideal'},
-                        {'data': @serieReal, 'name': 'Remain'}],
-                       {library: {hAxis: {title: "Tage"}, vAxis: {title: "Story Points"}}} %>
+        <div class="col-xs-12">
+          <%= line_chart [{'data': @serieAverage, 'name': 'Ideal'},
+                          {'data': @serieReal, 'name': 'Remain'}],
+                         xtitle: "Tage",
+                         ytitle: "Story Points",
+                         curve: false,
+                         height: '500px',
+                         title: @sprint.name + ' ('+ @sprint.startDate.strftime("%d.%m.%Y") + '-' + @sprint.endDate.strftime("%d.%m.%Y") + ')',
+                         legend: "bottom"
+          %>
+        </div>
       </div>
   <% else %>
     <p>Bitte wählen Sie einen Sprint aus der Liste aus!</p>
