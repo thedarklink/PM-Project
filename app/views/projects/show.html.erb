@@ -1,7 +1,7 @@
 <div class="container">
 
 <h3>
-  <small>  <%= @project.startDate %> - <%= @project.dueDate %></small>
+  <small>  <%= @project.startDate.strftime("%d.%m.%Y") %> - <%= @project.dueDate.strftime("%d.%m.%Y") %></small>
   <br/>
   <%= @project.name %> <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_project_path(@project) %>
 </h3>
