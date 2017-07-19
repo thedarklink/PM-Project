@@ -89,7 +89,7 @@ class BacklogitemsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def backlogitem_params
-    params.require(:backlogitem).permit(:title, :description, :author, :creationdate, :author, :creationdate, :assignedto, :state, :priorty, :effort, :project_id, :project, :sprint_id)
+    params.require(:backlogitem).permit(:title, :description, :author, :creationdate, :author, :creationdate, :assignedto, :state, :priorty, :effort, :project_id, :project, :sprint_id, :acceptancecriterion)
   end
 
   def sortable_columns
