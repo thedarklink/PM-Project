@@ -8,34 +8,21 @@
     <data-source name="Rails scrum-pm: development" uuid="a7c1e5a9-8ccd-4613-bdba-0c4c884be71f">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
       <first-sync>true</first-sync>
-      <introspection-schemas>scrum-pm_development:public</introspection-schemas>
     </data-source>
     <data-source name="Rails scrum-pm: test" uuid="3514f74a-f12a-4288-ac5e-15645850b1f1">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
-      <introspection-schemas>scrum-pm_test:public</introspection-schemas>
     </data-source>
     <data-source name="Rails PM: development" uuid="c459c6ae-8c93-41a3-8a2a-af9945489fa0">
-      <database-info product="PostgreSQL" version="9.6.1" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4.1212">
-        <identifier-quote-string>&quot;</identifier-quote-string>
-      </database-info>
-      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
-      <introspection-schemas>scrum-pm_development:public</introspection-schemas>
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
     </data-source>
     <data-source name="Rails PM: test" uuid="3e7818de-b680-4bbb-bfad-0992caa7c305">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
-      <introspection-schemas>scrum-pm_test:public</introspection-schemas>
     </data-source>
     <data-source name="Rails PM: production" uuid="8e6967fd-0578-43e6-a4ef-993b346d1892">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
     </data-source>
     <data-source name="Heroku Database" uuid="b767c5e7-cf24-4ec7-bc8b-0ec9e0bd1daa">
-      <database-info product="PostgreSQL" version="9.6.2" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.1.1">
-        <identifier-quote-string>&quot;</identifier-quote-string>
-      </database-info>
-      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
-      <secret-storage>master_key</secret-storage>
-      <user-name>fszhpmeouklecy</user-name>
-      <introspection-schemas>d93qpt0q0u6u6t:public</introspection-schemas>
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
     </data-source>
   </component>
 </project>
